@@ -1,7 +1,17 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
+import { AppDiv } from "./css/style";
 
 export const App = () => {
-  return <div className="app">React</div>;
+  const getMockApi = async () => {
+    const { data } = await axios.get("/hello");
+    console.log(data);
+  };
+
+  useEffect(() => {
+    getMockApi();
+  });
+  return <AppDiv>React</AppDiv>;
 };
 
 export default App;
