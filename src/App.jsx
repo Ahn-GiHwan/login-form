@@ -1,17 +1,17 @@
-import axios from "axios";
-import React, { useEffect } from "react";
-import { AppDiv } from "./css/style";
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
+import Login from "./routes/Login";
 
 export const App = () => {
-  const getMockApi = async () => {
-    const { data } = await axios.get("/hello");
-    console.log(data);
-  };
-
-  useEffect(() => {
-    getMockApi();
-  });
-  return <AppDiv>React</AppDiv>;
+  return (
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="" element={<Login />} />
+      </Routes>
+    </BrowserRouter>
+  );
 };
 
 export default App;
