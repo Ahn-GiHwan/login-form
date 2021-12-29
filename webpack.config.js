@@ -53,5 +53,8 @@ module.exports = (env, option) => {
         patterns: [{ from: "static" }],
       }),
     ],
+    devServer: {
+      historyApiFallback: true,
+    },
   };
 };
