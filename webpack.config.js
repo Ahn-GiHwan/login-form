@@ -1,6 +1,8 @@
 const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+const webpack = require("webpack");
 
 module.exports = (env, option) => {
   return {
@@ -52,6 +54,12 @@ module.exports = (env, option) => {
       new CopyPlugin({
         patterns: [{ from: "static" }],
       }),
+      new ReactRefreshWebpackPlugin({
+        overlay: {
+          useURLPolyfill: true,
+        },
+      }),
+      new webpack.HotModuleReplacementPlugin(),
     ],
     devServer: {
       historyApiFallback: true,
